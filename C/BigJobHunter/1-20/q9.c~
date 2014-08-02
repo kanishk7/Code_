@@ -1,0 +1,49 @@
+#include "template.h"
+
+/*
+
+Question 9: 
+
+From a given array, compute all possible subsets with the minimum time complexity.
+e.g.
+
+If the set is: {1,2,3}
+then
+{}
+{1}
+{2}
+{3}
+{1 2}
+{1 3}
+{2 3}
+{1 2 3}
+
+*/
+#include<stdio.h>
+
+int main ()
+{
+	char set[]={'1','3','5','7','9'};
+	int setSize = sizeof(set);
+	int totalSubset = 1<<setSize;
+	int i,j,k;
+	printf ("{}\n");
+	for (i = 1; i < totalSubset; i++)
+	{
+		printf("{");
+		k=i;
+		j = 0;
+		while(k)
+		{
+			if (k&1)
+			{
+				printf (" %c ", set[j]);
+			}
+			j++;
+			k = k>>1;
+		}
+		printf ("}\n");
+	}
+	printf ("\n");
+	return 0;
+}

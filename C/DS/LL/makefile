@@ -1,0 +1,2 @@
+make:
+	gcc driver.c

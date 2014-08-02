@@ -1,0 +1,76 @@
+/*
+Q 17. Write a code for printing a 2 dimensional matrix in spiral form.
+Input Array
+1  2  3  4 5 6 7 8 9 10 11 12
+13 14 15 16
+17 18 19 20
+Output : 1, 2, 3, 4, 8, 12, 16, 20, 19, 18, 17, 13, 9, 5, 6, 7, 11, 15, 14, 10
+*/
+
+#include "template.h"
+#define X 11
+#define Y 10
+#define SIZE X*Y
+
+
+int makespiral(int start, int b[X][Y], int x1, int x2, int y1, int y2)
+{
+	printf("Entering makespiral with x1-%d x2-%d y1-%d y2-%d.\n",x1,x2,y1,y2);
+	if(x1 > x2 && y1 > y2)	
+		return start;
+	int x = x1, y = y1;
+	for(; y<=y2; y++)
+	{
+		b[x][y] = start;
+		start++;
+	}		
+	y--;x++;
+	for(; x<=x2; x++)
+	{
+		b[x][y] = start;
+		start++;
+	}	
+	x--;
+	if(x1 == x2 || y1 == y2)
+		return start;
+	for(y=y-1; y>=y1; y--)
+	{
+		b[x][y] = start;
+		start++;
+	}	
+	y++;
+	for(x=x-1; x>x1; x--)
+	{
+		b[x][y] = start;
+		start++;
+	}
+	return start;
+}
+
+int main()
+{
+	int ux=X-1, lx=0, uy=Y-1, ly=0, n=1;
+	int b[X][Y];
+	int i,j,k;
+	goto skip;
+	for(i=0; i<X; i++)
+		for(j=0; j<Y; j++)
+			b[i][j] = 0;
+
+	printf("%d %d.\n",i,j);
+	
+	while(ux >= lx && uy >= ly)
+	{
+		n = makespiral(n,b,lx,ux,ly,uy);
+		lx++; ux--; ly++; uy--;
+//		break;		
+	}
+	for(i=0; i<X; i++)
+	{
+		for(j=0; j<Y; j++)
+			printf("%d\t",b[i][j]);
+		printf("\n");
+	}
+	skip:
+	return 0;	
+}

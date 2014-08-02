@@ -1,0 +1,9 @@
+#ifndef GRAPHALGOS_H
+#define GRAPHALGOS_H
+
+int BreadthFirstSearch(AdjList al, AdjMatrix am, int start_pt, char *s, int* visited_nodes);
+int DepthFirstSearch(AdjList al, AdjMatrix am, int start_pt, char *s, int* visited_nodes);
+int dijkstra(AdjList al, AdjMatrix am, int source, int distance[], int predecessor[]);
+
+
+#endif

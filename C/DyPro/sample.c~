@@ -1,0 +1,91 @@
+#include "template.h"
+
+struct node
+{
+	char c;
+	struct node* next;
+};
+
+typedef struct node* Node;
+
+struct queue
+{
+	Node head;
+	Node tail;
+	int size;
+};
+
+typedef struct queue* Queue;
+
+Queue init()
+{
+	Queue q = (Queue)malloc(sizeof(struct queue));
+	q->head = NULL;
+	q->tail = NULL;
+	q->size = 0;
+	return q;
+}
+
+int printQueue(Queue q)
+{
+	if(q->size == 0)
+	{
+		printf("Queue is empty.\n");
+		return -9;
+	}
+	Node temp = q->head;
+	while(temp)
+	{
+		printf("%c\t",temp->c);
+		temp = temp->next;
+	}
+	printf("<EOQ>\n");
+}
+
+void Enqueue(Queue q, char c)
+{
+	Node new = (Node)malloc(sizeof(struct node));
+	new->c = c;
+	new->next = NULL;
+	if(q->size)
+	{
+		q->tail->next = new;
+		q->tail = new;
+		q->size++;
+		return;
+	}
+	q->head = new;
+	q->tail = new;	
+	q->size = 1;
+	return;
+}
+
+char Dequeue(Queue q)
+{
+	if(q->size == 0)
+		return '\0';
+	else
+	{
+		Node temp = q->head;
+		q->head = temp->next;
+		q->size--;
+		return temp->c;
+	}	
+}
+
+int main()
+{
+	Queue q = init();
+	Enqueue(q,'c');
+	Enqueue(q,'d');
+	Enqueue(q,'e');
+	Enqueue(q,'x');	
+	Dequeue(q);
+	Dequeue(q);	
+	Dequeue(q);
+	Dequeue(q);		
+	printQueue(q);
+	return 0;
+}
+
+

@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main()
+{
+	int N; 		
+	scanf("%d",&n);
+	
+
+
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
