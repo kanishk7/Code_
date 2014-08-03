@@ -1,2 +1,7 @@
-**/a.out
+
+
+
+
+#General files to be ignored
+*.out
 
