@@ -17,9 +17,11 @@ bool compareBySecondElement(const pair<int, int>& pairOne, const pair<int, int>&
 int driver(map<int, vector<pair<int, int> > > customerTimes)
 {
 	int count = 0;
-	for(int i = 0; i < customerTimes.size(); i++)
+	map<int, vector<pair<int, int> > >::iterator it;
+	for(it = customerTimes.begin(); it != customerTimes.end(); it++)
 	{
-		vector<pair<int, int> > current = customerTimes[i];
+		int compartmentNumber = it->first;
+		vector<pair<int, int> > current = it->second;
 		if(current.size() == 0)
 			continue;
 		sort(current.begin(), current.end(), compareBySecondElement);
@@ -30,7 +32,7 @@ int driver(map<int, vector<pair<int, int> > > customerTimes)
 		{
 			if(current[j].first >= last)
 			{
-				last = current[i].second;
+				last = current[j].second;
 				count++;
 			}
 		}
@@ -40,13 +42,13 @@ int driver(map<int, vector<pair<int, int> > > customerTimes)
 
 int main()
 {
-	//freopen("input.txt","r",stdin);
+	freopen("input.txt","r",stdin);
 	int T, N, K, st, ft;
 	scanf("%d", &T);
 	while(T--)
 	{
 		scanf("%d %d", &N, &K);
-		map<int, vector<pair<int, int> > > customerTimesForCompartment(K+1);
+		map<int, vector<pair<int, int> > > customerTimesForCompartment;
 		for(int i = 0; i < N; i++)
 		{
 			int t;
