@@ -42,7 +42,7 @@ int driver(map<int, vector<pair<int, int> > > customerTimes)
 
 int main()
 {
-	freopen("input.txt","r",stdin);
+	//freopen("input.txt","r",stdin);
 	int T, N, K, st, ft;
 	scanf("%d", &T);
 	while(T--)
